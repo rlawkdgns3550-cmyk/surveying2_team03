@@ -26,7 +26,7 @@ badge: "빈 학술 보고서 틀"
 </p>
 
 <p align="center">
-  <img src="_layouts/KakaoTalk_20261116_091801713.jpg" alt="코로나19 전후 야간광량 비교(2019 vs 2020)"><br>
+  <img src="_layouts/1.jpg" alt="코로나19 전후 야간광량 비교(2019 vs 2020)"><br>
   <span style="font-size: 0.85em; color: gray;">코로나19 전후 야간광량 비교(2019 vs 2020) (출처: 중국 우한 야간 위성영상)</span>
 </p>
 
