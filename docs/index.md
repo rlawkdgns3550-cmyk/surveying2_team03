@@ -109,7 +109,7 @@ avg_rad에는 0보다 작은 값이 포함될 수 있다. 이는 실제 빛의 �
 </p>
 
 ### 4.3 NO2 자료
-NO₂ 자료는 GEE의 COPERNICUS/S5P/NRTI/L3_NO2 컬렉션에서 tropospheric_NO2_column_number_density 밴드, 즉 NO₂ 대류권 기둥농도(이하 NO₂ 기둥농도, mol/m²)를 사용하였으며, 분석 기간은 2019년과 2020년의 3~5월이다. Sentinel-5P 위성의 TROPOMI 센서는 현지 시각 약 13시 30분에 관측하므로, 이 자료는 한낮의 교통·산업 활동에 따른 배출을 주로 반영한다. 센서의 원래 픽셀 크기는 2019년 8월 6일 이전 약 3.5 × 7.2 km, 이후 약 3.5 × 5.5 km로, 비교하는 두 시기의 원 해상도가 다르다. GEE는 원자료(L2)를 1,113.2m 격자의 L3 자료로 변환하여 제공하며, 이 과정에서 대류권 NO₂ 기둥농도의 품질 지표(qa_value)가 0.75 미만인 픽셀은 제거된다. 본 연구에서는 이 품질 기준이 적용된 L3 자료를 사용하였다. 준실시간(NRTI) 자료는 [선택 이유: 예) 분석 기간 전체를 같은 처리 방식으로 제공]의 이유로 사용하였으며, 연구용으로 재처리된 OFFL 자료와 값에 차이가 있을 수 있다. [S5P NRTI](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S5P_NRTI_L3_NO2)
+NO₂ 자료는 GEE의 COPERNICUS/S5P/NRTI/L3_NO2 컬렉션에서 tropospheric_NO2_column_number_density 밴드, 즉 NO₂ 대류권 기둥농도(이하 NO₂ 기둥농도, mol/m²)를 사용하였으며, 분석 기간은 2019년과 2020년의 3~5월이다. Sentinel-5P 위성의 TROPOMI 센서는 현지 시각 약 13시 30분에 관측하므로, 이 자료는 한낮의 교통·산업 활동에 따른 배출을 주로 반영한다. 센서의 원래 픽셀 크기는 2019년 8월 6일 이전 약 3.5 × 7.2 km, 이후 약 3.5 × 5.5 km로, 비교하는 두 시기의 원 해상도가 다르다. GEE는 원자료(L2)를 1,113.2m 격자의 L3 자료로 변환하여 제공하며, 이 과정에서 대류권 NO₂ 기둥농도의 품질 지표(qa_value)가 0.75 미만인 픽셀은 제거된다. 본 연구에서는 이 품질 기준이 적용된 L3 자료를 사용하였다. 준실시간(NRTI) 자료는 분석 기간 전체를 같은 방식으로 처리하기 위해 사용하였으며, 연구용으로 재처리된 OFFL 자료와 값에 차이가 있을 수 있다. [S5P NRTI](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S5P_NRTI_L3_NO2)
 
 <p align="center">
   <img src="figures/201905NO2.png" alt="2019년 NO2 기둥농도 관측값 (5월 기준)"><br>
