@@ -106,10 +106,20 @@ VIIRS 자료의 관측 품질을 확보하기 위해 픽셀별 구름 없는 관
 
 **해당 자료의 `avg_rad`에는 0보다 작은 값이 포함될 수 있다. 이는 실제 물리적인 빛의 양이 음수라는 의미가 아니라, 위성 관측 및 자료 처리 과정에서 산출된 복사휘도 추정값의 특성으로 이해해야 한다. 본 연구에서는 음수값을 임의로 0으로 치환하거나 제외하지 않고, 다른 유효 관측 조건을 충족하는 경우 원자료의 값을 유지하였다. 따라서 음수 복사휘도는 자치구 평균 산출에 포함될 수 있으며, 평균값에 미치는 영향은 해당 픽셀의 수와 공간적 분포에 따라 달라질 수 있다.**
 
-### 4.3 대기환경 및 보조자료
+<p align="center">
+  <img src="figures/2019대시2020NTL3변화3개월평균.png" alt="2019대비 2020년도 3월~5월 NTL 변화율"><br>
+  <span style="font-size: 0.85em; color: gray;">2019대비 2020년도 3월~5월 NTL 변화율</span>
+</p>
+
+### 4.3 NO2 및 보조자료
 NO₂ 자료는 Sentinel-5P TROPOMI tropospheric_NO2_column_number_density(대류권 수직기둥농도, mol/m²)로 설정되어 있다. 제공 스크립트는 COPERNICUS/S5P/NRTI/L3_NO2와 qa_value > 0.75를 사용하며 cloud_fraction 필터는 없다. 따라서 기존 초안의 OFFL 및 cloud_fraction < 0.3 설명은 제공 코드와 모순되어 정정하였다. [S5P NRTI](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S5P_NRTI_L3_NO2)
 
 NO₂는 자치구 FeatureCollection에 reduceRegions를 적용하고 scale=1,113.2m를 지정한다. 이는 추출 scale이지 원 센서 footprint와 같은 의미가 아니다. 제공된 CSV는 2019·2020년의 3~5월 값을 포함한다.>기존 초안의 2019년 약 3.5×7.0km², 2020년 약 3.5×5.5km² footprint 수치는 최종 사용 제품 버전의 공식 문서와 대조해 인용한다.
+
+<p align="center">
+  <img src="figures/월별NO2.png" alt="2019대비 2020년도 3월~5월 NO2 기둥농도 변화율"><br>
+  <span style="font-size: 0.85em; color: gray;">2019대비 2020년도 3월~5월 NO2 기둥농도 변화율</span>
+</p>
 
 용도지역 면적은 2019년 자치구별 주거·상업·공업·녹지 면적을 LQ 분류에 쓰도록 한 자료다. 원표의 자료명·제공기관·기준일·면적은 노트북에 없어 출처 표기를 보완해야 한다.
 
