@@ -91,7 +91,7 @@ badge: "빈 학술 보고서 틀"
 
 야간광량 자료는 25개 자치구별로 2019년 봄 평균, 2020년 봄 평균, 두 연도의 변화량 및 변화율을 정리한 25행의 요약자료로 구성된다. NO₂ 자료는 자치구별 월평균값을 기록한 자료로, 2019년과 2020년 각각 3월·4월·5월의 값이 포함되어 총 150행(25개 자치구 × 2개 연도 × 3개월)으로 구성된다.
 
-**야간광량 분석 코드는 southkorea/seoul-maps의 JUSO 2015 비단순화 GeoJSON을 복원해 EPSG:4326으로 읽고, SIG_KOR_NM 필드로 자치구 경계를 dissolve한 뒤 25개 구 포함 여부를 확인한다. 경계는 2015년 기준으로 고정되어 2019·2020년 경계 변동을 반영하지 않는다.** [seoul-maps](https://github.com/southkorea/seoul-maps). **NO₂ 스크립트는 별도의 seoul_sigungu.shp를 읽어 EPSG:4326으로 바꾼 뒤 Earth Engine FeatureCollection으로 변환한다.**
+야간광량 분석 코드는 southkorea/seoul-maps의 JUSO 2015 비단순화 GeoJSON을 복원해 EPSG:4326으로 읽고, SIG_KOR_NM 필드로 자치구 경계를 dissolve한 뒤 25개 구 포함 여부를 확인한다. 경계는 2015년 기준으로 고정되어 2019·2020년 경계 변동을 반영하지 않는다.** [seoul-maps](https://github.com/southkorea/seoul-maps). **NO₂ 스크립트는 별도의 [seoul_sigungu.shp](figures/seoul_sigungu.zip)를 읽어 EPSG:4326으로 바꾼 뒤 Earth Engine FeatureCollection으로 변환한다.
 
 ### 4.2 야간광량 자료
 야간광량 자료는 Google Earth Engine(GEE)의 NOAA/VIIRS/DNB/MONTHLY_V1/VCMSLCFG 컬렉션을 사용하였다. 이 자료는 Suomi NPP 위성 VIIRS 센서의 주야간 밴드(DNB)를 미광 보정하여 월 단위로 합성한 것으로, 공간 해상도는 15초각(약 460m)이다. VIIRS는 현지 시각 약 01시 30분에 관측하므로, 이 자료는 심야 시간대의 인공조명을 반영한다. 분석 변수는 월평균 복사휘도인 avg_rad(nW/cm²/sr)이며, 월 합성에 사용된 구름 없는 관측 횟수인 cf_cvg는 유효 픽셀 선별에 사용하였다. 수역 제외에는 MODIS/006/MOD44W의 2015년 육지·수면 자료를 사용하였다. 처리 기준은 5.1.1에 제시하였다. [VIIRS](https://developers.google.com/earth-engine/datasets/catalog/NOAA_VIIRS_DNB_MONTHLY_V1_VCMSLCFG), [MOD44W](https://developers.google.com/earth-engine/datasets/catalog/MODIS_006_MOD44W).
