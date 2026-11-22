@@ -125,7 +125,7 @@ NO₂ 자료는 GEE의 COPERNICUS/S5P/NRTI/L3_NO2 컬렉션에서 tropospheric_N
 
 ### 4.4 보조 자료
 
-자치구별 용도지역 특성을 구분하기 위해 [서울 열린데이터광장](https://data.seoul.go.kr/dataList/OA-681/S/1/datasetView.do)에서 제공하는 「서울시 용도지역 현황 통계」에서 2019년 자치구별 주거·상업·공업·녹지지역 면적을 사용하였다. LQ 산출 방법과 분류 결과는 5.4.1에 제시하였다. [LQ자료](figures/LQ자료.xlsx).
+자치구별 용도지역 특성을 구분하기 위해 [서울 열린데이터광장](https://data.seoul.go.kr/dataList/OA-681/S/1/datasetView.do)에서 제공하는 서울시 용도지역 현황 통계에서 2019년 자치구별 주거·상업·공업·녹지지역 면적을 사용하였다. LQ 산출 방법과 분류 결과는 5.4.1에 제시하였다. [LQ자료](figures/LQ자료.xlsx).
 
 ## 5. 방법 {#method}
 
