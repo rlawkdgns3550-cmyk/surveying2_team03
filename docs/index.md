@@ -111,11 +111,16 @@ VIIRS 자료의 관측 품질을 확보하기 위해 픽셀별 구름 없는 관
 **해당 자료의 `avg_rad`에는 0보다 작은 값이 포함될 수 있다. 이는 실제 물리적인 빛의 양이 음수라는 의미가 아니라, 위성 관측 및 자료 처리 과정에서 산출된 복사휘도 추정값의 특성으로 이해해야 한다. 본 연구에서는 음수값을 임의로 0으로 치환하거나 제외하지 않고, 다른 유효 관측 조건을 충족하는 경우 원자료의 값을 유지하였다. 따라서 음수 복사휘도는 자치구 평균 산출에 포함될 수 있으며, 평균값에 미치는 영향은 해당 픽셀의 수와 공간적 분포에 따라 달라질 수 있다.**
 
 <p align="center">
-  <img src="figures/2019대시2020NTL3변화3개월평균.png" alt="2019대비 2020년도 3월~5월 NTL 변화율"><br>
-  <span style="font-size: 0.85em; color: gray;">2019대비 2020년도 3월~5월 NTL 변화율</span>
+  <img src="figures/2019NTL.png" alt="2019년 NTL 관측값 (전체 평균)"><br>
+  <span style="font-size: 0.85em; color: gray;">2019년 NTL 관측값 (전체 평균)</span>
 </p>
 
-### 4.3 NO2 및 보조자료
+<p align="center">
+  <img src="figures/2020NTL.png" alt="2020년 NTL 관측값 (전체 평균)"><br>
+  <span style="font-size: 0.85em; color: gray;">2020년 NTL 관측값 (전체 평균)</span>
+</p>
+
+### 4.3 NO2 자료
 NO₂ 자료는 Google Earth Engine의 COPERNICUS/S5P/NRTI/L3_NO2 컬렉션을 사용하였으며, 분석 변수는 tropospheric_NO2_column_number_density이다. 해당 변수는 대류권 NO₂ 수직 기둥농도를 나타내며, 단위는 mol/m²이다. 자료는 2019년과 2020년의 3~5월을 대상으로 구성하였다. [S5P NRTI](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S5P_NRTI_L3_NO2)
 
 자료는 2019년과 2020년 각각 3~5월을 대상으로 수집하였으며, qa_value가 0.75를 초과하는 픽셀만 유효 자료로 사용하였다. 각 월의 유효 관측자료를 평균하여 월별 NO₂ 평균 영상을 생성하고, 3개 월 모두에서 유효한 픽셀만을 추출하기 위해 월별 유효 영역의 교집합인 공통 픽셀 마스크를 적용하였다.
@@ -123,9 +128,16 @@ NO₂ 자료는 Google Earth Engine의 COPERNICUS/S5P/NRTI/L3_NO2 컬렉션을 �
 자치구별 NO₂ 값은 공통 픽셀 마스크를 적용한 월별 영상에 대해 서울시 자치구 경계를 기준으로 공간 평균을 산출하여 추출하였다. 이때 GEE의 reduceRegions와 평균 집계 함수(ee.Reducer.mean())를 사용하였으며, 분석 격자 간격은 1,113.2 m로 설정하였다. 이는 분석에 적용한 출력 격자의 공간 간격이며, TROPOMI 센서의 실제 관측 공간해상도와는 구분된다.
 
 <p align="center">
-  <img src="figures/월별NO2.png" alt="2019대비 2020년도 3월~5월 NO2 기둥농도 변화율"><br>
-  <span style="font-size: 0.85em; color: gray;">2019대비 2020년도 3월~5월 NO2 기둥농도 변화율</span>
+  <img src="figures/201905NO2.png" alt="2019년 NO2 기둥농도 관측값 (5월 기준)"><br>
+  <span style="font-size: 0.85em; color: gray;">2019년 NO2 기둥농도 관측값 (5월 기준)</span>
 </p>
+
+<p align="center">
+  <img src="figures/202005NO2.png" alt="2020년 NO2 기둥농도 관측값 (5월 기준)"><br>
+  <span style="font-size: 0.85em; color: gray;">2020년 NO2 기둥농도 관측값 (5월 기준)</span>
+</p>
+
+### 4.4 보조 자료
 
 자치구별 용도지역 특성을 구분하기 위해 [서울 열린데이터광장](https://data.seoul.go.kr/dataList/OA-681/S/1/datasetView.do)에서 제공하는 「서울시 용도지역 현황 통계」의 2019년 자료를 활용하였다. 해당 통계는 서울시 및 자치구별 용도지역 면적을 제공하며, 주거지역·상업지역·공업지역·녹지지역을 주요 분류 항목으로 포함한다. [LQ자료](docs/figures/LQ자료.xlsx).
 
