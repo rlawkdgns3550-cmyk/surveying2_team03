@@ -93,9 +93,15 @@ badge: "빈 학술 보고서 틀"
 
 두 위성자료 모두 월별 단위의 분석을 위해 채택하였으나, 월별 자료의 구축 및 최종 산출 과정에는 차이가 있다. VIIRS 자료는 위성 관측값을 월 단위로 합성한 자료가 GEE 컬렉션에서 제공되므로, 해당 월의 합성 복사휘도를 대상으로 자치구별 공간 평균을 산출하였다. 반면 Sentinel-5P/TROPOMI NRTI 자료는 일별 L3 관측자료를 대상으로 분석 월에 해당하는 영상을 수집한 뒤, 월별 평균 영상을 생성하고 이를 자치구별로 집계하였다. 따라서 두 자료는 월별 대표값을 활용한다는 공통점이 있으나, VIIRS는 제공 단계에서 월별 합성이 이루어진 반면 NO₂는 연구 과정에서 월별 평균을 산출하였다는 차이가 있다.
 
+<p align="center">
+  <img src="figures/material/위성자료 전처리와 회귀분석 개요3.png" alt="자료의 공간집계 방식 비교"><br>
+  <span style="font-size: 0.85em; color: gray;">자료의 공간집계 방식 비교</span>
+</p>
+
 또한 야간광량 분석 코드는 [southkorea/seoul-maps](https://github.com/southkorea/seoul-maps)의 JUSO 2015 비단순화 GeoJSON을 복원해 EPSG:4326으로 읽고, SIG_KOR_NM 필드로 자치구 경계를 dissolve한 뒤 25개 구 포함 여부를 확인하였다. 경계는 2015년 기준으로 고정되어 2019·2020년 경계 변동을 반영하지 않는다. NO₂ 스크립트는 별도의 [seoul_sigungu.shp](figures/seoul_sigungu.zip)를 읽어 EPSG:4326으로 바꾼 뒤 Earth Engine FeatureCollection으로 변환한다. 야간광량과 NO₂ 자료는 서로 다른 수집 및 처리 환경을 통해 구축되었으므로, 각 자료의 공간 집계 과정에 적합한 별도의 자치구 경계자료를 사용하였다. 두 공간자료는 서로 다른 출처와 제작 과정을 거쳤으나, 공간적 비교의 기준을 통일하기 위해 모두 EPSG:4326 좌표계로 변환하여 사용하였다. 다만 동일한 좌표계를 적용하였더라도 원자료의 제작 시점과 경계 구축 방식이 다르므로 자치구 경계의 세부적인 위치 및 면적에 차이가 존재할 수 있다.
 
 ### 4.2 야간광량 자료
+
 야간광량 자료는 Google Earth Engine(GEE)의 NOAA/VIIRS/DNB/MONTHLY_V1/VCMSLCFG 컬렉션을 사용하였다. 이 자료는 Suomi NPP 위성 VIIRS 센서의 주야간 밴드(DNB)를 미광 보정하여 월 단위로 합성한 것으로, 공간 해상도는 15초각(약 460m)이다. VIIRS는 현지 시각 약 01시 30분에 관측하므로, 이 자료는 심야 시간대의 인공조명을 반영한다. 분석 변수는 월평균 복사휘도인 avg_rad(nW/cm²/sr)이며, 월 합성에 사용된 구름 없는 관측 횟수인 cf_cvg는 유효 픽셀 선별에 사용하였다. 수역 제외에는 MODIS/006/MOD44W의 2015년 육지·수면 자료를 사용하였다. 처리 기준은 5.1.1에 제시하였다. [VIIRS](https://developers.google.com/earth-engine/datasets/catalog/NOAA_VIIRS_DNB_MONTHLY_V1_VCMSLCFG), [MOD44W](https://developers.google.com/earth-engine/datasets/catalog/MODIS_006_MOD44W).
 
 avg_rad에는 0보다 작은 값이 포함될 수 있다. 이는 실제 빛의 양이 음수라는 뜻이 아니라 관측 및 보정 과정에서 생기는 추정값의 특성이다. 본 연구에서는 음수값을 0으로 바꾸거나 제외하지 않고, 다른 유효 조건을 충족하면 원자료 값을 자치구 평균 산출에 포함하였다. 최종 야간광량 자료에는 25개 자치구의 2019·2020년 봄철 평균값, 변화량, 변화율과 연도별 최소 유효 면적 비율이 기록되어 있으며, 25개 자치구 모두 두 연도의 최소 유효 면적 비율이 1.0이었다.
@@ -133,6 +139,11 @@ NO₂ 자료는 GEE의 COPERNICUS/S5P/NRTI/L3_NO2 컬렉션에서 tropospheric_N
 
 ### 5.1.1 야간광량 자료 전처리
 
+<p align="center">
+  <img src="figures/material/VIIRS 야간광량 전처리 흐름도.png" alt="VIIRS 야간광량 전처리 방법"><br>
+  <span style="font-size: 0.85em; color: gray;">VIIRS 야간광량 전처리 방법</span>
+</p>
+
 VIIRS 월별 합성자료에서 자치구별 야간광량을 산출하기 위해 먼저 수면 영역과 유효하지 않은 관측 픽셀을 제외하였다. 육지 영역은 MODIS/006/MOD44W의 2015년 자료에서 water_mask 밴드를 이용하여 구분하였으며, water_mask 값이 0인 픽셀을 육지로 분류하였다. 이때 water_mask_QA를 함께 활용하여 값이 10인 자료 미존재 영역을 제외하였다. 따라서 본 연구의 마스크는 자료 미존재 영역을 제외하되, QA 값이 10이 아닌 나머지 분류를 모두 포함하는 방식으로 적용하였다.
 
 이후 월별 구름 없는 관측 횟수를 나타내는 cf_cvg가 3회 이상인 픽셀만 유효 픽셀로 선정하였다. 이는 한두 차례의 관측만으로 산출된 월평균 복사휘도가 해당 월의 대표값으로 사용되는 것을 제한하고, 최소한의 관측 횟수를 확보하기 위한 것이다. 다만 3회라는 기준은 제공기관이 지정한 필수 기준이 아니라, 본 연구에서 설정한 최소 관측 횟수 조건이다.
@@ -166,6 +177,11 @@ $$
 여기서 $$NTL^{spring}_{d,y}$$는 자치구 $$d$$의 연도 $$y$$에 대한 봄철 야간광량 대표값이며, $$\bar{R}_{d,y,m}$$은 해당 자치구의 $m$월 야간광량 공간평균값이다.
 
 ### 5.1.4 NO₂ 자료 전처리 및 통합
+
+<p align="center">
+  <img src="figures/material/Sentinel-5P NO₂ 전처리 과정2.png" alt="Sentinel-5P NO₂ 전처리 방법"><br>
+  <span style="font-size: 0.85em; color: gray;">Sentinel-5P NO₂ 전처리 방법</span>
+</p>
 
 NO₂ 자료는 COPERNICUS/S5P/NRTI/L3_NO2 컬렉션에서 분석 대상 지역과 기간을 필터링한 뒤, 2019년과 2020년 각각 3~5월의 월별 평균 영상을 생성하였다. 이 자료는 4.3에서 설명한 L3 변환 단계의 품질 기준이 이미 적용된 자료이다.
 
@@ -219,6 +235,11 @@ Y_d=\beta_0+\beta_1 X_d+\varepsilon_d
 $$
 
 여기서 $$Y_d$$는 자치구 $$d$$의 NO₂ 변화율, $$X_d$$는 야간광량 변화율, $$\beta_0$$는 절편, $$\beta_1$$은 회귀계수, $$\varepsilon_d$$는 오차항이다. 회귀계수 $$\beta_1$$은 야간광량 변화율이 1%p 클 때 NO₂ 변화율이 평균적으로 얼마나 다르게 나타나는지를 의미한다.
+
+<p align="center">
+  <img src="figures/material/위성 데이터 회귀분석 워크플로우3.png" alt="회귀모형 개요"><br>
+  <span style="font-size: 0.85em; color: gray;">회귀모형 개요</span>
+</p>
 
 회귀모형은 최소제곱법(Ordinary Least Squares, OLS)으로 추정하였다. 관계의 방향과 강도는 회귀계수 $$\beta_1$$과 95% 신뢰구간, 유의확률(p-value), 결정계수($$R^2$$)로 평가하였다. 선형 상관의 정도를 나타내는 피어슨 상관계수 $$r$$과 그 신뢰구간을 함께 산출하였으며, 이상값의 영향을 점검하기 위해 순위 기반의 스피어만 상관계수(Spearman's rho)를 보조 지표로 계산하였다. 유의수준은 $$\alpha=0.05$$로 설정하였다.
 
