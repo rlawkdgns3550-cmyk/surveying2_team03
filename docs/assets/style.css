@@ -20,9 +20,10 @@ main table:not(.team-table) th,
 main table:not(.team-table) td,
 article table:not(.team-table) th,
 article table:not(.team-table) td {
+
   border: 1px solid #cbd5cf !important;
   padding: 10px 12px !important;
-  text-align: center;
+  text-align: center !important;
 }
 
 main table:not(.team-table) th,
