@@ -386,29 +386,42 @@ NO₂는 25개 자치구 중 24개 구에서 감소하였으며, 평균 변화�
   <span style="font-size: 0.85em; color: gray;">그림 9. 서울시 25개 자치구 전체 산술 평균 대비 용도지역별 변화율 차이와 회귀계수 차이</span>
 </p>
 
-<div style="display: flex; gap: 24px; align-items: flex-start;">
+<div style="display:flex; gap:24px; align-items:flex-start;">
+  <div style="flex:1; min-width:0;">
+    <table style="width:100%; border-collapse:collapse; text-align:center;">
+      <thead>
+        <tr>
+          <th>유형</th>
+          <th>야간광량(NTL) 차이</th>
+          <th>NO₂ 차이</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>상업 특화형</td><td>-2.85</td><td>-0.83</td></tr>
+        <tr><td>주거 특화형</td><td>+0.07</td><td>+1.14</td></tr>
+        <tr><td>공업 특화형</td><td>+0.07</td><td>+2.37</td></tr>
+        <tr><td>녹지 특화형</td><td>+2.20</td><td>-3.20</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-<div style="flex: 1; min-width: 0;">
-
-| 유형 | 야간광량(NTL) 차이 | NO₂ 차이 |
-|:---:|:---:|:---:|
-| 상업 특화형 | -2.85 | -0.83 |
-| 주거 특화형 | +0.07 | +1.14 |
-| 공업 특화형 | +0.07 | +2.37 |
-| 녹지 특화형 | +2.20 | -3.20 |
-
-</div>
-
-<div style="flex: 1; min-width: 0;">
-
-| 유형 | 회귀계수 | 서울시 전체 대비 차이 |
-|:---:|:---:|:---:|
-| 상업 특화형 | -1.656 | -0.661 |
-| 주거 특화형 | -1.113 | -0.118 |
-| 공업 특화형 | -1.048 | -0.053 |
-| 녹지 특화형 | -1.782 | -0.787 |
-
-</div>
+  <div style="flex:1; min-width:0;">
+    <table style="width:100%; border-collapse:collapse; text-align:center;">
+      <thead>
+        <tr>
+          <th>유형</th>
+          <th>회귀계수</th>
+          <th>서울시 전체 대비 차이</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>상업 특화형</td><td>-1.656</td><td>-0.661</td></tr>
+        <tr><td>주거 특화형</td><td>-1.113</td><td>-0.118</td></tr>
+        <tr><td>공업 특화형</td><td>-1.048</td><td>-0.053</td></tr>
+        <tr><td>녹지 특화형</td><td>-1.782</td><td>-0.787</td></tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 
