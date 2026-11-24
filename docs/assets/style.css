@@ -5,3 +5,21 @@
 .team-table-wrap{overflow-x:auto;max-width:100%;margin:16px 0;border:1px solid var(--line);border-radius:8px}.team-table{width:100%;min-width:0;table-layout:fixed;border-collapse:separate;border-spacing:0;font-size:13px}.team-table caption{text-align:left;padding:10px;font-weight:700}.team-table th,.team-table td{padding:7px 3px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);text-align:center;vertical-align:middle}.team-table thead th{background:#e4eee5;min-width:0;line-height:1.4}.team-table th:first-child{background:#f3f7f1;min-width:0;width:19%}.team-table input[type=text]{font-size:13px;min-width:0;padding:8px 2px;text-align:center}.team-table select{width:100%;min-width:0;padding:9px 1px;appearance:none;text-align:center;text-align-last:center;cursor:pointer;font:inherit;color:var(--ink);border:1px solid #8fa59a;border-radius:6px;background:white}.team-table select[data-level="주도"]{background:#dcefe0}.team-table select[data-level="조력"]{background:#fff0cb}.team-table select[data-level="미참"]{background:#f5e1dc}@media print{.team-table{min-width:0;font-size:9px}.team-table th,.team-table td{padding:4px;min-width:0!important}.team-table-wrap{overflow:visible}.team-panel details{display:block}}
 
 .team-table thead small{font-size:.8em;white-space:nowrap}.team-table select:focus{outline:2px solid var(--accent);outline-offset:0}@media(max-width:600px){.team-panel{padding:12px 6px}.team-table{font-size:10px}.team-table th,.team-table td{padding:7px 1px}.team-table input[type=text]{font-size:11px;padding:9px 1px}.team-table select{font-size:10px;padding:10px 0}.team-table .leader-badge{font-size:9px;padding:0 4px}.team-table thead small{font-size:8px}}
+
+/* 아래는 표 테두리 용 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #999;
+}
+
+th, td {
+  border: 1px solid #999;
+  padding: 8px 12px;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
