@@ -7,20 +7,22 @@
 .team-table thead small{font-size:.8em;white-space:nowrap}.team-table select:focus{outline:2px solid var(--accent);outline-offset:0}@media(max-width:600px){.team-panel{padding:12px 6px}.team-table{font-size:10px}.team-table th,.team-table td{padding:7px 1px}.team-table input[type=text]{font-size:11px;padding:9px 1px}.team-table select{font-size:10px;padding:10px 0}.team-table .leader-badge{font-size:9px;padding:0 4px}.team-table thead small{font-size:8px}}
 
 /* 아래는 표 테두리 용 */
-table {
+article table {
   width: 100%;
   border-collapse: collapse;
-  border: 1px solid #999;
+  border: 1px solid #444;
 }
 
-th, td {
+article table th,
+article table td {
   border: 1px solid #444;
   padding: 8px 12px;
   text-align: center;
 }
 
-th {
-  background-color: #292929;
-  color: #fff;
-
+article table th {
+  background-color: #e4eee5;
+  color: var(--ink);
 }
+
+
